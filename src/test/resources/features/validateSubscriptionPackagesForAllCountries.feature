@@ -1,7 +1,7 @@
 Feature: Validate subscription packages for all countries
 
   @smoke
-  Scenario: Validate the Subscription Packages for country SA
+  Scenario: Validate subscription packages for country SA
     Given User is on subscription plan page
     When User selects "sa" country
     Then User check subscription details - plan types, price, and currency details
@@ -11,7 +11,7 @@ Feature: Validate subscription packages for all countries
       | PREMIUM | 60    | SAR      |
 
   @smoke
-  Scenario: Validate the Subscription Packages for country Bahrain
+  Scenario: Validate subscription packages for country Bahrain
     Given User is on subscription plan page
     When User selects "bh" country
     Then User check subscription details - plan types, price, and currency details
@@ -21,7 +21,7 @@ Feature: Validate subscription packages for all countries
       | PREMIUM | 6     | BHD      |
 
   @smoke
-  Scenario: Validate the Subscription Packages for country Kuwait
+  Scenario: Validate subscription packages for country Kuwait
     Given User is on subscription plan page
     When User selects "kw" country
     Then User check subscription details - plan types, price, and currency details

@@ -60,4 +60,4 @@ Set up your machine.
 ### Tests
 
 #### [Assignment 1]
-1. **[Scenario-1](https://github.com/vinaykumarvvs/quiQUA/blob/master/src/test/resources/features/Assignment2.feature#L3):** Book a round trip flight from Bangalore to Delhi
+1. **[Scenario-1](https://github.com/sahilt125/AutomationTestFramework-STC/blob/main/src/test/resources/features/validateSubscriptionPackagesForAllCountries.feature#L3):** Validate subscription packages for all countries
