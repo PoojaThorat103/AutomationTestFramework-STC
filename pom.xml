@@ -1,0 +1,206 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.example</groupId>
+  <artifactId>AutomationTest</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>AutomationTestFramework-STCTV</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.release>11</maven.compiler.release>
+    <env>qa</env>
+    <browser>chrome</browser>
+    <execution>local</execution>
+    <suiteXmlFile>testng.xml</suiteXmlFile>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>7.7.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>7.12.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>4.6.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>tech.grasshopper</groupId>
+      <artifactId>extentreports-cucumber7-adapter</artifactId>
+      <version>1.7.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.11.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>5.0.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>5.1.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>7.12.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.20.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.20.0</version>
+    </dependency>
+
+
+  </dependencies>
+
+  <profiles>
+    <profile>
+      <id>qa</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <env>qa</env>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>dev</id>
+      <properties>
+        <env>dev</env>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>prod</id>
+      <properties>
+        <env>prod</env>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>chrome</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <browser>chrome</browser>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>firefox</id>
+      <properties>
+        <browser>firefox</browser>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>edge</id>
+      <properties>
+        <browser>edge</browser>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>local</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <execution>local</execution>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>docker</id>
+      <properties>
+        <execution>docker</execution>
+      </properties>
+    </profile>
+
+  <profile>
+    <id>parallel</id>
+    <properties>
+      <suiteXmlFile>testng_parallel.xml</suiteXmlFile>
+    </properties>
+  </profile>
+</profiles>
+
+  <build>
+    <filters>
+      <filter>src/test/resources/env/config.${env}.properties</filter>
+    </filters>
+
+    <resources>
+      <resource>
+        <directory>src/test/resources/env</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>*.properties</include>
+        </includes>
+      </resource>
+    </resources>
+
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.21.0</version>
+          <configuration>
+            <suiteXmlFiles>
+              <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+            </suiteXmlFiles>
+            <properties>
+            <property>
+              <name>dataproviderthreadcount</name>
+              <value>3</value>
+            </property>
+            </properties>
+            <systemPropertyVariables>
+              <systeminfo.os>${os.name}</systeminfo.os>
+              <systeminfo.env>${env}</systeminfo.env>
+              <systeminfo.browser>${browser}</systeminfo.browser>
+              <systeminfo.execution>${execution}</systeminfo.execution>
+            </systemPropertyVariables>
+          </configuration>
+        </plugin>
+      </plugins>
+  </build>
+</project>
