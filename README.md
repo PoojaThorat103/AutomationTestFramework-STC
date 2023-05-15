@@ -35,7 +35,7 @@ Set up your machine.
   1. ```mvn clean test``` (To run tests on default configuration, browser=chrome, env=qa, execution=local, parallel=false)
   2. ```mvn clean test -Pfirefox,dev,docker``` (To run tests on specific configuration, browser=firefox, env=dev, execution=docker, parallel=false)
   3. ```mvn clean test -Pparallel``` (To run tests on default configuration with parallel=true)
-  4. ```mvn clean test -Dcucumber.filter.tags=<tageName> cucumber.features=<featurefilename>``` (To run tests on specified cucumber tags and/or feature files)
+  4. ```mvn clean test -Dcucumber.filter.tags=<tageName> -Dcucumber.features=<featurefilename>``` (To run tests on specified cucumber tags and/or feature files)
 
 
 * Run tests from IntelliJ:
