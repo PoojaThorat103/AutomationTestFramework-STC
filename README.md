@@ -19,16 +19,14 @@ Set up your machine.
   1. chrome
   2. firefox
   3. edge
-
 * Execution:
   1. local
   2. docker
-
 * Parallel Execution:
   1. On local
   2. On docker
 
-#### Docker Configuration
+#### Docker Configuration (If you want to run it on docker hub)
 * Start docker images using docker compose (Go to project root folder) and Run command : ```docker compose up```
 * Scale up the docker images using command : ```docker-compose up --scale chrome=5 -d```
 
