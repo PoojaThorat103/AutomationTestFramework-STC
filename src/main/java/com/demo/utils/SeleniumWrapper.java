@@ -15,7 +15,7 @@ public class SeleniumWrapper extends BaseConfiguration{
                 we.click();
                 log.info("User successfully clicked on WebElement - " +we);
             }else{
-                verifyTest(false,"User couldn't click on WebElement - " + we);
+                verifyTest(false,"WebElement is not dispalyed to perform the click - " + we);
             }
         }catch(Exception e){
             verifyTest(false, "Exception while clicking on webElement "+we+" with error message - "+ e.getMessage() );
@@ -28,7 +28,7 @@ public class SeleniumWrapper extends BaseConfiguration{
                 we.sendKeys(text);
                 log.info("user has entered the value : "+text +" for WebElement - "+ we);
             }else{
-                verifyTest(false,"User not able to pass value to " + we);
+                verifyTest(false,"WebElement is not displayed to enter the value - " + we);
             }
         }catch(Exception e){
             verifyTest(false,"Exception while entering the text for WebElement - "+ we +", Error message - "+ e.getMessage());
